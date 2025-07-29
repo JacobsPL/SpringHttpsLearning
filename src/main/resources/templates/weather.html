@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pogoda</title>
+</head>
+<body>
+<h1>Wybierz dane pogodowe</h1>
+
+<ul>
+    <li><a th:href="@{/weather/temp(city=${city})}">Temperatura</a></li>
+    <li><a th:href="@{/weather/pressure(city=${city})}">Ciśnienie</a></li>
+    <li><a th:href="@{/weather/rain(city=${city})}">Opady</a></li>
+</ul>
+</body>
+</html>

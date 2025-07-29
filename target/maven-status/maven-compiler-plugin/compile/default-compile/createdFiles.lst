@@ -1,0 +1,8 @@
+com\example\mywebapp\weather\WeatherResponse.class
+com\example\mywebapp\weather\jsonresponse\Coord.class
+com\example\mywebapp\weather\jsonresponse\Weather.class
+com\example\mywebapp\weather\jsonresponse\Main.class
+com\example\mywebapp\DemoSpringa10Application.class
+com\example\mywebapp\weather\HelloController.class
+com\example\mywebapp\weather\WeatherDownloader.class
+com\example\mywebapp\weather\jsonresponse\Name.class
