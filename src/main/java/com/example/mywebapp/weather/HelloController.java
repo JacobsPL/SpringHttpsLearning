@@ -16,6 +16,16 @@ public class HelloController {
         this.weatherDownloader = weatherDownloader;
     }
 
+    @GetMapping("/login")
+    public String showLoginPage() {
+        return "login";
+    }
+
+    @GetMapping("/loginPage")
+    public String verifyLogin(@RequestParam String user, String password) {
+
+        return "login";
+    }
 
     @GetMapping("/weather/city")
     public String city(@RequestParam String city, Model model) {
