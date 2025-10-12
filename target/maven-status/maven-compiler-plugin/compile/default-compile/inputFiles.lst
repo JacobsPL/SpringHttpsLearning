@@ -1,5 +1,5 @@
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/DemoSpringa10Application.java
-/home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/DataBaseControler.java
+/home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/DatabaseRepo.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/HelloController.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/LoginPage.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/User.java

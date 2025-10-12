@@ -1,19 +1,30 @@
-package com.example.mywebapp.weather;
+package com.example.mywebapp.weather.Controllers;
 
+import com.example.mywebapp.weather.DatabaseRepo;
+import com.example.mywebapp.weather.User;
+import com.example.mywebapp.weather.WeatherDownloader;
+import com.example.mywebapp.weather.WeatherResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.sql.SQLException;
 
 
 @Controller
+@RestController
+//@RequiredArgsConstructor
 public class HelloController {
 
     private final WeatherDownloader weatherDownloader;
+    private final DatabaseRepo databaseRepo;
 
-    public HelloController(WeatherDownloader weatherDownloader) {
+    public HelloController(WeatherDownloader weatherDownloader, DatabaseRepo databaseRepo) {
         this.weatherDownloader = weatherDownloader;
+        this.databaseRepo = databaseRepo;
     }
 
     @GetMapping("/login")
@@ -22,9 +33,19 @@ public class HelloController {
     }
 
     @GetMapping("/loginPage")
-    public String verifyLogin(@RequestParam String user, String password) {
+    public String verifyLogin(@RequestParam String login, @RequestParam String password, Model model) throws SQLException {
+        User tempUsr = null;
 
-        return "login";
+        tempUsr = databaseRepo.select(login);
+
+        if (login.equals(tempUsr.getUsername())&&password.equals(tempUsr.getPassword())){
+            model.addAttribute("message","Logowanie zakonczone sukcesem!");
+            model.addAttribute("success",true);
+        }else{
+            model.addAttribute("message","ERROR! Bledna nazwa uzytkownika lub haslo!");
+            model.addAttribute("success",false);
+        }
+            return "loginPage";
     }
 
     @GetMapping("/weather/city")
