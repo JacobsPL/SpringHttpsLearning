@@ -21,8 +21,6 @@ public class DatabaseRepo {
         this.jdbc = jdbc;
     }
 
-
-
     public User select(String username) throws SQLException {
         String querry = "SELECT * FROM users WHERE username = ?;";
 
@@ -41,21 +39,4 @@ public class DatabaseRepo {
             }
         }, username);
     }
-
-//    public User select(int id) throws SQLException {
-//
-//        String querry = "SELECT * FROM users WHERE id = ?;";
-//        PreparedStatement stmt = connection.prepareStatement(querry);
-//        stmt.setInt(1, id);
-//        User user = null;
-//        try (ResultSet resultSet = stmt.executeQuery()) {
-//            if (resultSet.next()) {
-//                user = new User(
-//                        resultSet.getInt("id"),
-//                        resultSet.getString("username"),
-//                        resultSet.getString("pswrd_unprotected"));
-//            }
-//        }
-//        return user;
-//    }
 }
