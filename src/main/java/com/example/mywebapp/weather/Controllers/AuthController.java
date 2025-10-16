@@ -1,8 +1,8 @@
 package com.example.mywebapp.weather.Controllers;
 
 
-import com.example.mywebapp.weather.DatabaseRepo;
-import com.example.mywebapp.weather.User;
+import com.example.mywebapp.weather.service.DatabaseRepo;
+import com.example.mywebapp.weather.service.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,20 +25,20 @@ public class AuthController {
     public String login() { return "login"; }
 
     @PostMapping("/auth")
-    public String authenticate(
-            @RequestParam String login,
-            @RequestParam String password,
-            Model model
-    ) throws SQLException {
+    public String authenticate(@RequestParam String login, @RequestParam String password, Model model) throws SQLException {
 
         User tempUser = databaseRepo.select(login);
 
+        if(tempUser.isUserNull()) {
+            model.addAttribute("message", "Błędny login lub hasło.");
+            return "login";
+        }
         boolean ok = tempUser.getUsername().equals(login) && tempUser.getPassword().equals(password);
 
         if (ok) {
             model.addAttribute("message", "Logowanie udane!");
             model.addAttribute("success", true);
-            return "postLogin"; // np. templates/postLogin.html
+            return "postLogin";
         } else {
             model.addAttribute("message", "Błędny login lub hasło.");
             return "login";

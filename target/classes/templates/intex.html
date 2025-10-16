@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu Glowne</title>
+</head>
+<body>
+<h1>Wybierz gdzie chcesz przejsc</h1>
+
+<ul>
+    <li><a th:href="@{/waather}">Sprawdz pogode</a></li>
+    <li><a th:href="@{/login">Wroc do Logowania</a></li>
+    <li><a th:href="@{/createUser">Stworz uzytkownika</a></li>
+    <li><a th:href="@{/destroyUser">Skasuj uzytkownika</a></li>
+    <li><a th:href="@{/logout">Wyloguj sie</a></li>
+</ul>
+</body>
+</html>

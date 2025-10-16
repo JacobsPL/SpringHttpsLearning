@@ -2,12 +2,12 @@
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/Controllers/AuthController.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/Controllers/HomeController.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/Controllers/WeatherController.java
-/home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/DatabaseRepo.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/LoginPage.java
-/home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/User.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/WeatherDownloader.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/WeatherResponse.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/jsonresponse/Coord.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/jsonresponse/Main.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/jsonresponse/Name.java
 /home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/jsonresponse/Weather.java
+/home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/service/DatabaseRepo.java
+/home/debian/IdeaProjects/Weather_APP/src/main/java/com/example/mywebapp/weather/service/User.java

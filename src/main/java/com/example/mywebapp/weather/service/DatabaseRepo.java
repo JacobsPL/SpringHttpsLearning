@@ -1,4 +1,4 @@
-package com.example.mywebapp.weather;
+package com.example.mywebapp.weather.service;
 
 
 import org.springframework.dao.DataAccessException;
@@ -6,14 +6,11 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Repository
 public class DatabaseRepo {
-
-    Connection connection;
 
     private final JdbcTemplate jdbc;
 
@@ -35,8 +32,17 @@ public class DatabaseRepo {
                             rs.getString("username"),
                             rs.getString("pswrd_unprotected"));
                 }
+
+                if (user.getUsername() == null){
+                    return null;
+                }
                 return user;
             }
-        }, username);
+        },username);
+    }
+
+    public void insetIntoUser(String username, String password){
+        String querry = "INSERT INTO users (username,pswrd_unprotected) values(?,?);";
+        jdbc.update(querry);
     }
 }

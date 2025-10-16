@@ -1,4 +1,4 @@
-package com.example.mywebapp.weather;
+package com.example.mywebapp.weather.service;
 
 import java.util.Date;
 
@@ -14,6 +14,21 @@ public class User {
         this.username=username;
         this.password=password;
     }
+
+    public static boolean checkIfExists(String username){
+        final DatabaseRepo databaseRepo;
+        User tempUser = databaseRepo.select(username);
+
+        if(tempUser.getUsername() == null){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isUserNull(){
+        return this.username == null;
+    }
+
 
     public String getUsername(){
         return username;

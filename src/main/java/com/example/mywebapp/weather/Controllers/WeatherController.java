@@ -1,6 +1,6 @@
 package com.example.mywebapp.weather.Controllers;
 
-import com.example.mywebapp.weather.DatabaseRepo;
+import com.example.mywebapp.weather.service.DatabaseRepo;
 import com.example.mywebapp.weather.WeatherDownloader;
 import com.example.mywebapp.weather.WeatherResponse;
 import org.springframework.stereotype.Controller;
@@ -8,11 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @Controller
-@RestController
+//@RestController
 //@RequiredArgsConstructor
 public class WeatherController {
 
