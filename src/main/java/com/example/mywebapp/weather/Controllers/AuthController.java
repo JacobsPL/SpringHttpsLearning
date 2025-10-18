@@ -2,7 +2,6 @@ package com.example.mywebapp.weather.Controllers;
 
 
 import com.example.mywebapp.weather.service.DatabaseRepo;
-import com.example.mywebapp.weather.models.User;
 import com.example.mywebapp.weather.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,16 +29,7 @@ public class AuthController {
     @PostMapping("/auth")
     public String authenticate(@RequestParam String login, @RequestParam String password, Model model) throws SQLException {
 
-
-
-        if(userService.checkIfExists(login)) {
-            model.addAttribute("message", "Błędny login lub hasło.");
-            return "login";
-        }
-        User tempUser = databaseRepo.select(login);
-        boolean ok = tempUser.getUsername().equals(login) && tempUser.getPassword().equals(password);
-
-        if (ok) {
+        if (userService.authoriseUser(login, password)) {
             model.addAttribute("message", "Logowanie udane!");
             model.addAttribute("success", true);
             return "postLogin";
@@ -47,6 +37,23 @@ public class AuthController {
             model.addAttribute("message", "Błędny login lub hasło.");
             return "login";
         }
+
+
+//        if(userService.checkIfExists(login)) {
+//            model.addAttribute("message", "Błędny login lub hasło.");
+//            return "login";
+//        }
+//        User tempUser = databaseRepo.select(login);
+//        boolean ok = tempUser.getUsername().equals(login) && tempUser.getPassword().equals(password);
+//
+//        if (ok) {
+//            model.addAttribute("message", "Logowanie udane!");
+//            model.addAttribute("success", true);
+//
+//        } else {
+//            model.addAttribute("message", "Błędny login lub hasło.");
+//            return "login";
+//        }
     }
 }
 
