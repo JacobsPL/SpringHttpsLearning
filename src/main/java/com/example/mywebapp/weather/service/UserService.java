@@ -38,4 +38,8 @@ public class UserService {
             return false;
         }
     }
+
+    public void changePassword(String newPassword, String login){
+        repo.updateUserPassword(newPassword,login);
+    }
 }

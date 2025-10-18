@@ -15,11 +15,11 @@ import java.sql.SQLException;
 
 public class AuthController {
 
-    private final DatabaseRepo databaseRepo;
+    //private final DatabaseRepo databaseRepo;
     private final UserService userService;
 
     public AuthController(DatabaseRepo databaseRepo, UserService userService) {
-        this.databaseRepo = databaseRepo;
+        //this.databaseRepo = databaseRepo;
         this.userService = userService;
     }
 
@@ -37,23 +37,6 @@ public class AuthController {
             model.addAttribute("message", "Błędny login lub hasło.");
             return "login";
         }
-
-
-//        if(userService.checkIfExists(login)) {
-//            model.addAttribute("message", "Błędny login lub hasło.");
-//            return "login";
-//        }
-//        User tempUser = databaseRepo.select(login);
-//        boolean ok = tempUser.getUsername().equals(login) && tempUser.getPassword().equals(password);
-//
-//        if (ok) {
-//            model.addAttribute("message", "Logowanie udane!");
-//            model.addAttribute("success", true);
-//
-//        } else {
-//            model.addAttribute("message", "Błędny login lub hasło.");
-//            return "login";
-//        }
     }
 }
 

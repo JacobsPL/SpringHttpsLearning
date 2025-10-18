@@ -46,4 +46,9 @@ public class DatabaseRepo {
         String querry = "INSERT INTO users (username,pswrd_unprotected) values(?,?);";
         jdbc.update(querry);
     }
+
+    public void updateUserPassword(String newPassword, String username){
+        String querry = "UPDATE users SET pswrd_unprotected = ? WHERE username = ?;";
+        jdbc.update(querry);
+    }
 }
