@@ -1,6 +1,7 @@
 package com.example.mywebapp.weather.service;
 
 
+import com.example.mywebapp.weather.models.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -33,7 +34,7 @@ public class DatabaseRepo {
                             rs.getString("pswrd_unprotected"));
                 }
 
-                if (user.getUsername() == null){
+                if (user == null){
                     return null;
                 }
                 return user;

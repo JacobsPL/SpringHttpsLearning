@@ -2,7 +2,8 @@ package com.example.mywebapp.weather.Controllers;
 
 
 import com.example.mywebapp.weather.service.DatabaseRepo;
-import com.example.mywebapp.weather.service.User;
+import com.example.mywebapp.weather.models.User;
+import com.example.mywebapp.weather.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,11 @@ import java.sql.SQLException;
 public class AuthController {
 
     private final DatabaseRepo databaseRepo;
+    private final UserService userService;
 
-    public AuthController(DatabaseRepo databaseRepo) {
+    public AuthController(DatabaseRepo databaseRepo, UserService userService) {
         this.databaseRepo = databaseRepo;
+        this.userService = userService;
     }
 
     @GetMapping("/login")
@@ -27,12 +30,13 @@ public class AuthController {
     @PostMapping("/auth")
     public String authenticate(@RequestParam String login, @RequestParam String password, Model model) throws SQLException {
 
-        User tempUser = databaseRepo.select(login);
 
-        if(tempUser.isUserNull()) {
+
+        if(userService.checkIfExists(login)) {
             model.addAttribute("message", "Błędny login lub hasło.");
             return "login";
         }
+        User tempUser = databaseRepo.select(login);
         boolean ok = tempUser.getUsername().equals(login) && tempUser.getPassword().equals(password);
 
         if (ok) {
