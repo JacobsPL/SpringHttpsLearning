@@ -2,12 +2,9 @@ package com.example.mywebapp.weather.service;
 
 
 import com.example.mywebapp.weather.models.User;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Repository
@@ -20,25 +17,16 @@ public class DatabaseRepo {
     }
 
     public User select(String username) throws SQLException {
-        String querry = "SELECT * FROM users WHERE username = ?;";
+        String query = "SELECT * FROM users WHERE username = ?;";
+        return jdbc.query(query, rs -> {
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("pswrd_unprotected"));
 
-        return jdbc.query(querry, new ResultSetExtractor<User>() {
-            User user = null;
-
-            @Override
-            public User extractData(ResultSet rs) throws SQLException, DataAccessException {
-                if (rs.next()) {
-                    user = new User(
-                            rs.getInt("id"),
-                            rs.getString("username"),
-                            rs.getString("pswrd_unprotected"));
-                }
-
-                if (user == null){
-                    return null;
-                }
-                return user;
             }
+            return null;
         },username);
     }
 

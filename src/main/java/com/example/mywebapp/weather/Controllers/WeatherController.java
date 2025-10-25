@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-//@RestController
-//@RequiredArgsConstructor
 public class WeatherController {
 
     private final WeatherDownloader weatherDownloader;
